@@ -1,6 +1,14 @@
 'use strict';
 
-TOA.controller('View1Ctrl', function($scope, $modal) {
+TOA.controller('View1Ctrl', function($scope, $modal, petService) {
+
+  $scope.init = function() {
+    loadPets();
+  }
+
+  $scope.loadPets = function () {
+    $scope.pets = petService.getAll();
+  }
 
   $scope.add = function() {
     var modalInstance = $modal.open({
@@ -23,7 +31,7 @@ TOA.controller('View1Ctrl', function($scope, $modal) {
     });
 
     modalInstance.result.then(function () {
-      $scope.closeDirective();
+      $scope.loadPets();
     });
   };
 });
