@@ -52,7 +52,6 @@ TOA.controller('View1Ctrl', function ($scope, $modal, petService) {
 		});
 
 		modalInstance.result.then(function () {
-			$scope.loadPets();
 		});
 	};
 });

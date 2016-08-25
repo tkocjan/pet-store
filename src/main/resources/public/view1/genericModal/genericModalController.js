@@ -19,7 +19,6 @@ TOA.controller('GenericModalController', function ($scope, $modalInstance, title
 		petService.create($scope.pet, $scope.upload.csvFile)
 			.then(function () {
 				$modalInstance.close();
-				action();
 			});
 	};
 
