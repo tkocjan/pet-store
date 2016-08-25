@@ -1,14 +1,29 @@
 'use strict';
 
-angular.module('myApp.view1', ['ngRoute'])
+TOA.controller('View1Ctrl', function($scope, $modal) {
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/view1', {
-    templateUrl: 'view1/view1.html',
-    controller: 'View1Ctrl'
-  });
-}])
+  $scope.add = function() {
+    var modalInstance = $modal.open({
+      templateUrl: '../view1/genericModal/genericModal.html',
+      controller: 'GenericModalController',
+      windowClass: 'settings-modal',
+      resolve: {
+        title: function () { return 'page.timeOff.timeOffRequest.cancelTitle'; },
+        message: function () { return 'page.timeOff.modal.cancel.confirmationMessage'; },
+        action: function () { return function() {
+          return timeOffService.cancelRequest(request.id) } },
+        actionButtonText: function () { return "page.timeOff.modal.cancel.cancel" }
+      }
+    });
 
-.controller('View1Ctrl', [function() {
+    $scope.$on('$destroy', function () {
+      try {
+        modalInstance.close();
+      } catch (e) { }
+    });
 
-}]);
+    modalInstance.result.then(function () {
+      $scope.closeDirective();
+    });
+  };
+});

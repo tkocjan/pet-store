@@ -1,0 +1,13 @@
+<div ng-init="init()" data-automation="genericModal">
+    <div class="modal-header">
+        <button class="close" data-automation="modalClose" ng-click="$dismiss()"><i class="fa fa-times"></i></button>
+        <h4 class="modal-title" data-automation="modalTitle" translate="{{title}}"></h4>
+    </div>
+    <form class="modal-body" data-automation="modalBody" form-error-handler>
+        <div data-automation="message" translate="{{message}}"></div>
+    </form>
+    <div class="modal-footer">
+        <button type="submit" data-automation="submitButton" class="btn btn-primary pull-left" ng-click="performAction()" translate="{{actionButtonText}}"></button>
+        <button data-automation="cancelButton" type="button" class="btn btn-link pull-left" ng-click="$dismiss()" translate="controls.form.action.cancel"></button>
+    </div>
+</div>
