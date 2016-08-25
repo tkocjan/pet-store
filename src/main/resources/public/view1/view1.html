@@ -1,5 +1,5 @@
 <div ng-init="init()">
-    <a href="#" class="btn btn-primary" ng-click="add()" role="button">Button</a>
+    <a href="#" class="btn btn-primary" ng-click="add()" role="button">Add a pet</a>
 
     <div class="row">
         <div ng-repeat="pet in pets">
@@ -10,6 +10,7 @@
                         <h3>{{pet.name}}</h3>
                         <p>...</p>
                     </div>
+                    <a href="#" class="btn btn-primary" ng-click="delete(pet.id)" role="button">Delete</a>
                 </div>
             </div>
         </div>

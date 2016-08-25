@@ -16,10 +16,10 @@ TOA.controller('GenericModalController', function ($scope, $modalInstance, title
 	};
 
 	$scope.performAction = function () {
-		console.log($scope.upload.csvFile);
 		petService.create($scope.pet, $scope.upload.csvFile)
 			.then(function () {
 				$modalInstance.close();
+				action();
 			});
 	};
 

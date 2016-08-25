@@ -13,7 +13,12 @@ TOA.controller('View1Ctrl', function ($scope, $modal, petService) {
 				console.log(response.data);
 				$scope.dataRetrieved = true;
 			});
-		;
+	}
+
+	$scope.delete =function (petId) {
+		petService.delete(petId).then(function (response) {
+			$scope.loadPets();
+		});
 	}
 
 	$scope.add = function () {
@@ -30,7 +35,7 @@ TOA.controller('View1Ctrl', function ($scope, $modal, petService) {
 				},
 				action: function () {
 					return function () {
-						return timeOffService.cancelRequest(request.id)
+						return $scope.loadPets();
 					}
 				},
 				actionButtonText: function () {

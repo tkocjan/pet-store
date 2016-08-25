@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Base64;
 import java.util.List;
-import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,10 +27,10 @@ public class PetService {
 			csvFile.transferTo(tempFile);
 			String base64 = Base64.getEncoder().encodeToString(Files.readAllBytes(tempFile.toPath()));
 			pet.setBase64Image(base64);
+			petRepository.save(pet);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		petRepository.save(pet);
 	}
 
 	@Transactional
@@ -39,6 +38,7 @@ public class PetService {
 		return petRepository.findAll();
 	}
 
+	@Transactional
 	public void delete(long petId) {
 		petRepository.delete(petId);
 	}

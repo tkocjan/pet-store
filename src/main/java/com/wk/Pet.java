@@ -21,6 +21,10 @@ public class Pet {
 
 	private String name;
 
+	public String getBase64Image() {
+		return base64Image;
+	}
+
 	@Lob
 	private String base64Image;
 

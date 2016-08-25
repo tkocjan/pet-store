@@ -4,7 +4,7 @@ TOA.factory('petService', function ($http) {
 	return {
 		get: function (id) {
 			return $http({
-				url: '/pet' + id,
+				url: '/pet/' + id,
 				method: 'GET'
 			});
 		},
