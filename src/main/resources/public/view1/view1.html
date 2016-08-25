@@ -5,7 +5,7 @@
         <div ng-repeat="pet in pets">
             <div class="col-sm-6 col-md-4">
                 <div class="thumbnail">
-                    <!--<img src="..." alt="...">-->
+                    <img data-ng-src="data:image/jpeg;base64,{{pet.base64Image}}">
                     <div class="caption">
                         <h3>{{pet.name}}</h3>
                         <p>...</p>

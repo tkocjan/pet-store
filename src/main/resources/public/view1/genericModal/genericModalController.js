@@ -8,6 +8,7 @@ TOA.controller('GenericModalController', function ($scope, $modalInstance, title
 	$scope.errorHandler = {};
 
 	$scope.pet = {};
+	$scope.upload = {};
 
 	// default call-back functions
 	$scope.finished = function () {
@@ -15,7 +16,8 @@ TOA.controller('GenericModalController', function ($scope, $modalInstance, title
 	};
 
 	$scope.performAction = function () {
-		petService.create($scope.pet)
+		console.log($scope.upload.csvFile);
+		petService.create($scope.pet, $scope.upload.csvFile)
 			.then(function () {
 				$modalInstance.close();
 			});

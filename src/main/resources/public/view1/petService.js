@@ -14,11 +14,20 @@ TOA.factory('petService', function ($http) {
 				method: 'GET'
 			});
 		},
-		create: function (pet) {
+		create: function (pet, image) {
+			var fd = new FormData();
+			fd.append('pet', JSON.stringify(pet));
+			fd.append('image', image);
+
 			return $http({
 				url: '/pet',
 				method: 'POST',
-				data: pet
+				headers: { 'Content-Type': undefined },
+				data: fd
+				,
+				transformRequest: function (data, headersGetterFunction) {
+					return data;
+				}
 			});
 		},
 		delete: function (id) {

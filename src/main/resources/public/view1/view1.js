@@ -10,7 +10,7 @@ TOA.controller('View1Ctrl', function ($scope, $modal, petService) {
 		petService.getAll()
 			.then(function (response) {
 				$scope.pets = response.data;
-				console.log($scope.pets);
+				console.log(response.data);
 				$scope.dataRetrieved = true;
 			});
 		;

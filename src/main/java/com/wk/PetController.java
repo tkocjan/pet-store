@@ -1,12 +1,16 @@
 package com.wk;
 
+import java.io.IOException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * @author WaleedK
@@ -18,9 +22,10 @@ public class PetController {
 	@Autowired
 	private PetService petService;
 
-	@RequestMapping(method = RequestMethod.POST)
-	public void create(@RequestBody Pet pet) {
-		petService.save(pet);
+	@RequestMapping(method = RequestMethod.POST, consumes = {"multipart/form-data"})
+	public void create(@RequestPart("pet") String petString, @RequestPart("image") MultipartFile csvFile) throws IOException {
+		Pet pet = new ObjectMapper().readValue(petString, Pet.class);
+		petService.save(pet, csvFile);
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
@@ -29,13 +34,14 @@ public class PetController {
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE)
-	public void delete(@PathVariable("petId") int petId) {
-
+	public void delete(@PathVariable("petId") long petId) {
+		petService.delete(petId);
 	}
 
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	public List<Pet> getAll() {
-		return petService.getAll();
+		List<Pet> all = petService.getAll();
+		return all;
 	}
 
 }

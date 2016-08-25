@@ -4,7 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
 
 /**
  * @author WaleedK
@@ -18,6 +20,9 @@ public class Pet {
 	private Long id;
 
 	private String name;
+
+	@Lob
+	private String base64Image;
 
 	public Pet() {
 	}
@@ -36,5 +41,9 @@ public class Pet {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public void setBase64Image(String base64Image) {
+		this.base64Image = base64Image;
 	}
 }
