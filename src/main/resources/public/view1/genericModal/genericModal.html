@@ -1,13 +1,34 @@
 <div ng-init="init()" data-automation="genericModal">
     <div class="modal-header">
         <button class="close" data-automation="modalClose" ng-click="$dismiss()"><i class="fa fa-times"></i></button>
-        <h4 class="modal-title" data-automation="modalTitle" translate="{{title}}"></h4>
+        <h4 class="modal-title" data-automation="modalTitle">Add Pet</h4>
     </div>
     <form class="modal-body" data-automation="modalBody" form-error-handler>
-        <div data-automation="message" translate="{{message}}"></div>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" placeholder="Enter name">
+            </div>
+            <div class="form-group">
+                <label for="exampleSelect1">Type</label>
+                <select class="form-control" id="exampleSelect1">
+                    <option>Dog</option>
+                    <option>Cat</option>
+                    <option>Hamster</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputFile">Uplage image</label>
+                <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+                <!--<small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>-->
+            </div>
     </form>
     <div class="modal-footer">
-        <button type="submit" data-automation="submitButton" class="btn btn-primary pull-left" ng-click="performAction()" translate="{{actionButtonText}}"></button>
-        <button data-automation="cancelButton" type="button" class="btn btn-link pull-left" ng-click="$dismiss()" translate="controls.form.action.cancel"></button>
+        <button type="submit" data-automation="submitButton" class="btn btn-primary pull-left"
+                ng-click="performAction()">
+            Add
+        </button>
+        <button data-automation="cancelButton" type="button" class="btn btn-link pull-left" ng-click="$dismiss()">
+            Cancel
+        </button>
     </div>
 </div>
