@@ -28,6 +28,8 @@ public class Pet {
 	@Lob
 	private String base64Image;
 
+	private String bio;
+
 	public Pet() {
 	}
 
@@ -61,5 +63,13 @@ public class Pet {
 
 	public void setType(PetType type) {
 		this.type = type;
+	}
+
+	public String getBio() {
+		return bio;
+	}
+
+	public void setBio(String bio) {
+		this.bio = bio;
 	}
 }
