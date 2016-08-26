@@ -7,11 +7,24 @@ import org.springframework.security.core.GrantedAuthority;
  * @since 0.0.0
  */
 public enum Permission implements GrantedAuthority {
-	USER,
+	CREATE,
+	READ,
+	UPDATE,
 	DELETE;
 
 	@Override
 	public String getAuthority() {
 		return name();
 	}
+
+	public static final Permission[] USER_PERMISSIONS = new Permission[]{
+			READ,
+	};
+
+	public static final Permission[] ADMIN_PERMISSIONS = new Permission[]{
+			CREATE,
+			READ,
+			UPDATE,
+			DELETE
+	};
 }

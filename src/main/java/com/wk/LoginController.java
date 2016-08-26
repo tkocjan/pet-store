@@ -13,8 +13,6 @@ public class LoginController {
 
 	@RequestMapping("/user")
 	public Principal user(Principal user) {
-		System.out.println();
-		System.out.println();
 		return user;
 	}
 }
