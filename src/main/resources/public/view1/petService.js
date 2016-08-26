@@ -8,10 +8,11 @@ TOA.factory('petService', function ($http) {
 				method: 'GET'
 			});
 		},
-		getAll: function () {
+		getAll: function (query) {
 			return $http({
 				url: '/pet/all',
-				method: 'GET'
+				method: 'GET',
+				params: {query: query},
 			});
 		},
 		create: function (pet, image) {
@@ -22,7 +23,7 @@ TOA.factory('petService', function ($http) {
 			return $http({
 				url: '/pet',
 				method: 'POST',
-				headers: { 'Content-Type': undefined },
+				headers: {'Content-Type': undefined},
 				data: fd
 				,
 				transformRequest: function (data, headersGetterFunction) {

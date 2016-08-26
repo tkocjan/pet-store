@@ -34,8 +34,8 @@ public class PetService {
 	}
 
 	@Transactional
-	public List<Pet> getAll() {
-		return petRepository.findAll();
+	public List<Pet> getAll(String query) {
+		return query == null ? petRepository.findAll() : petRepository.findAll(query);
 	}
 
 	@Transactional

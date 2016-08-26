@@ -3,11 +3,12 @@
 TOA.controller('View1Ctrl', function ($scope, $modal, petService) {
 	$scope.init = function () {
 		$scope.pets = [];
+		$scope.query = null;
 		$scope.loadPets();
 	}
 
 	$scope.loadPets = function () {
-		petService.getAll()
+		petService.getAll($scope.query)
 			.then(function (response) {
 				$scope.pets = response.data;
 				console.log(response.data);
@@ -15,7 +16,7 @@ TOA.controller('View1Ctrl', function ($scope, $modal, petService) {
 			});
 	}
 
-	$scope.delete =function (petId) {
+	$scope.delete = function (petId) {
 		petService.delete(petId).then(function (response) {
 			$scope.loadPets();
 		});
@@ -54,4 +55,10 @@ TOA.controller('View1Ctrl', function ($scope, $modal, petService) {
 		modalInstance.result.then(function () {
 		});
 	};
+
+	$scope.$watch('query', function (newValue, oldValue) {
+		if (oldValue != newValue) {
+			$scope.loadPets();
+		}
+	});
 });

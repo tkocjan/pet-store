@@ -37,8 +37,8 @@ public class PetController {
 	}
 
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
-	public List<Pet> getAll() {
-		return petService.getAll();
+	public List<Pet> getAll(String query) {
+		return petService.getAll(query);
 	}
 
 }
