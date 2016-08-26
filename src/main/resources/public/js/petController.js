@@ -1,6 +1,6 @@
 'use strict';
 
-TOA.controller('View1Ctrl', function ($scope, $modal, petService) {
+TOA.controller('PetController', function ($scope, $modal, petService) {
 	$scope.init = function () {
 		$scope.pets = [];
 		$scope.query = null;
@@ -24,8 +24,8 @@ TOA.controller('View1Ctrl', function ($scope, $modal, petService) {
 
 	$scope.add = function () {
 		var modalInstance = $modal.open({
-			templateUrl: '../view1/genericModal/genericModal.html',
-			controller: 'GenericModalController',
+			templateUrl: '../templates/addPetModal.html',
+			controller: 'AddPetModalController',
 			windowClass: 'settings-modal',
 			resolve: {
 				title: function () {

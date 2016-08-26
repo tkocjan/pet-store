@@ -1,42 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>My AngularJS App</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Pet Store</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link href="styles/toa-styles.less" rel="stylesheet/less" type="text/css"/>
+    <link href="styles/petstore-styles.less" rel="stylesheet/less" type="text/css"/>
 
-  <script src="bower-lib/less/dist/less.js"></script>
+    <script src="bower-lib/less/dist/less.js"></script>
 
-  <style type="text/css">
-    [ng\:cloak], [ng-cloak], .ng-cloak {
-      display: none !important;
-    }
-  </style>
+    <style type="text/css">
+        [ng\:cloak], [ng-cloak], .ng-cloak {
+            display: none !important;
+        }
+    </style>
 
 </head>
 
 <body ng-app="TOA">
-  <div ng-view></div>
+<div ng-view></div>
 
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-  -->
-  <script src="bower-lib/angular/angular.js"></script>
-  <script src="bower-lib/angular-route/angular-route.js"></script>
-  <script src="bower-lib/angular-bootstrap/ui-bootstrap.js"></script>
-  <script src="bower-lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-  <script src="app.js"></script>
-  <script src="view1/view1.js"></script>
-  <script src="view2/view2.js"></script>
-  <script src="view1/petService.js"></script>
-  <script src="view1/genericModal/UploaderDirective.js"></script>
-  <script src="view1/genericModal/genericModalController.js"></script>
-  <script src="components/version/version.js"></script>
-  <script src="components/version/version-directive.js"></script>
-  <script src="components/version/interpolate-filter.js"></script>
+<script src="bower-lib/angular/angular.js"></script>
+<script src="bower-lib/angular-route/angular-route.js"></script>
+<script src="bower-lib/angular-bootstrap/ui-bootstrap.js"></script>
+<script src="bower-lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="app.js"></script>
+<script src="js/petController.js"></script>
+<script src="js/petService.js"></script>
+<script src="js/UploaderDirective.js"></script>
+<script src="js/addPetModal.js"></script>
 </body>
 </html>

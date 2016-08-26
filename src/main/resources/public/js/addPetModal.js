@@ -1,7 +1,7 @@
 'use strict';
 
-TOA.controller('GenericModalController', function ($scope, $modalInstance, title, message, action, actionButtonText,
-                                                   petService) {
+TOA.controller('AddPetModalController', function ($scope, $modalInstance, title, message, action, actionButtonText,
+                                                  petService) {
 	$scope.message = message;
 	$scope.actionButtonText = actionButtonText;
 	$scope.title = title;
