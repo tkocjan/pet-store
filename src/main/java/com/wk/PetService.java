@@ -12,7 +12,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @author WaleedK
- * @since 0.0.0
  */
 @Service
 public class PetService {
@@ -31,6 +30,11 @@ public class PetService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Transactional
+	public Pet get(long petId) {
+		return petRepository.findOne(petId);
 	}
 
 	@Transactional

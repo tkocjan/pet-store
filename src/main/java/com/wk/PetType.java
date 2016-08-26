@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
  * @author WaleedK
- * @since 0.0.0
  */
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum PetType {

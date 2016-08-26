@@ -11,7 +11,6 @@ import javax.persistence.Table;
 
 /**
  * @author WaleedK
- * @since 0.0.0
  */
 @Entity
 @Table(name = "pets")
@@ -30,7 +29,7 @@ public class Pet {
 
 	private String bio;
 
-	public Pet() {
+	protected Pet() {
 	}
 
 	public Long getId() {

@@ -7,7 +7,6 @@ import org.springframework.data.repository.query.Param;
 
 /**
  * @author WaleedK
- * @since 0.0.0
  */
 public interface PetRepository extends JpaRepository<Pet, Long> {
 	@Query("FROM Pet a WHERE a.name like :query% ")

@@ -13,7 +13,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * @author WaleedK
- * @since 0.0.0
  */
 @RestController
 @RequestMapping("/pet")
@@ -27,8 +26,8 @@ public class PetController {
 	}
 
 	@RequestMapping(value = "{petId}", method = RequestMethod.GET)
-	public void get(@PathVariable("petId") int petId) {
-
+	public Pet get(@PathVariable("petId") int petId) {
+		return petService.get(petId);
 	}
 
 	@RequestMapping(value = "{petId}", method = RequestMethod.DELETE)
@@ -40,5 +39,4 @@ public class PetController {
 	public List<Pet> getAll(String query) {
 		return petService.getAll(query);
 	}
-
 }
