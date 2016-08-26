@@ -1,5 +1,6 @@
 <div ng-init="init()">
-    <a href="#" class="btn btn-primary" ng-click="add()" role="button">Add a pet</a>
+
+    <button type="button" class="btn btn-primary btn-lg " ng-click="add()">Block level button</button>
 
     <div class="row">
         <div ng-repeat="pet in pets">
@@ -8,9 +9,10 @@
                     <img data-ng-src="data:image/jpeg;base64,{{pet.base64Image}}">
                     <div class="caption">
                         <h3>{{pet.name}}</h3>
-                        <p>...</p>
+                        <h5>{{pet.type.name}}</h5>
+                        <p>{{pet.description}}</p>
                     </div>
-                    <a href="#" class="btn btn-primary" ng-click="delete(pet.id)" role="button">Delete</a>
+                    <button type="button" class="btn btn-primary btn-link " ng-click="delete(pet.id)">Delete</button>
                 </div>
             </div>
         </div>

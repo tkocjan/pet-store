@@ -35,7 +35,7 @@ TOA.controller('View1Ctrl', function ($scope, $modal, petService) {
 				},
 				action: function () {
 					return function () {
-						return $scope.loadPets();
+						// return $scope.loadPets();
 					}
 				},
 				actionButtonText: function () {

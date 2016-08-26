@@ -1,12 +1,13 @@
 package com.wk;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
-import javax.validation.constraints.Max;
 
 /**
  * @author WaleedK
@@ -21,9 +22,8 @@ public class Pet {
 
 	private String name;
 
-	public String getBase64Image() {
-		return base64Image;
-	}
+	@Enumerated(EnumType.STRING)
+	private PetType type;
 
 	@Lob
 	private String base64Image;
@@ -47,7 +47,19 @@ public class Pet {
 		this.name = name;
 	}
 
+	public String getBase64Image() {
+		return base64Image;
+	}
+
 	public void setBase64Image(String base64Image) {
 		this.base64Image = base64Image;
+	}
+
+	public PetType getType() {
+		return type;
+	}
+
+	public void setType(PetType type) {
+		this.type = type;
 	}
 }

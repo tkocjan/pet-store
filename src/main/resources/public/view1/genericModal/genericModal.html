@@ -10,10 +10,11 @@
             </div>
             <div class="form-group">
                 <label for="exampleSelect1">Type</label>
-                <select class="form-control" id="exampleSelect1">
-                    <option>Dog</option>
-                    <option>Cat</option>
-                    <option>Hamster</option>
+                <select class="form-control" ng-model="pet.type" id="exampleSelect1">
+                    <option value="DOG">Dog</option>
+                    <option value="CAT">Cat</option>
+                    <option value="HAMSTER">Hamster</option>
+                    <option ng-if="!pet.type" value="">Choose...</option>
                 </select>
             </div>
             <div class="form-group">
