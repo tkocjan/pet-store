@@ -9,7 +9,6 @@ TOA.directive("uploader", [function () {
             element.bind("change", function (changeEvent) {
                 scope.$apply(function () {
                     scope.uploader.csvFile = changeEvent.target.files[0];
-                    changeEvent.target.value = '';
                 });
             });
         }

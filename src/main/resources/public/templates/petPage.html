@@ -15,7 +15,7 @@
         </div>
     </nav>
 
-    <div class="row">
+    <div class="row" style="margin-top: 50px;margin-left: 40px">
         <div ng-repeat="pet in pets" class="col-md-4 panel-body" style="height: 500px">
             <div class="thumbnail">
                 <img data-ng-src="data:image/jpeg;base64,{{pet.base64Image}}">
@@ -24,7 +24,7 @@
                     <h5>{{pet.type.name}}</h5>
                     <p class="text-muted">{{pet.bio}}</p>
                 </div>
-                <button type="button" class="btn btn-primary btn-link " ng-click="delete(pet.id)">Delete</button>
+                <button type="button" class="btn btn-primary btn-link" ng-click="delete(pet.id)">Delete</button>
             </div>
         </div>
     </div>
