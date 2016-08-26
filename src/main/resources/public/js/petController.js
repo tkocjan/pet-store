@@ -28,19 +28,10 @@ TOA.controller('PetController', function ($scope, $modal, petService) {
 			controller: 'AddPetModalController',
 			windowClass: 'settings-modal',
 			resolve: {
-				title: function () {
-					return 'page.timeOff.timeOffRequest.cancelTitle';
-				},
-				message: function () {
-					return 'page.timeOff.modal.cancel.confirmationMessage';
-				},
 				action: function () {
 					return function () {
 						return $scope.loadPets();
 					}
-				},
-				actionButtonText: function () {
-					return "page.timeOff.modal.cancel.cancel"
 				}
 			}
 		});

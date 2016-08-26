@@ -1,16 +1,16 @@
-<div data-automation="genericModal">
+<div>
     <div class="modal-header">
-        <button class="close" data-automation="modalClose" ng-click="$dismiss()"><i class="fa fa-times"></i></button>
-        <h4 class="modal-title" data-automation="modalTitle">Add Pet</h4>
+        <button class="close" ng-click="$dismiss()"><i class="fa fa-times"></i></button>
+        <h4 class="modal-title">Add Pet</h4>
     </div>
-    <form class="modal-body" data-automation="modalBody" form-error-handler>
+    <form class="modal-body" form-error-handler>
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text" class="form-control" placeholder="Enter name..." ng-model="pet.name">
         </div>
         <div class="form-group">
-            <label for="exampleSelect1">Type</label>
-            <select class="form-control" ng-model="pet.type" id="exampleSelect1">
+            <label for="petType">Type</label>
+            <select class="form-control" ng-model="pet.type" id="petType">
                 <option value="DOG">Dog</option>
                 <option value="CAT">Cat</option>
                 <option value="HAMSTER">Hamster</option>
@@ -19,24 +19,24 @@
         </div>
 
         <div class="form-group">
-            <label class="control-label" for="sizing-textarea">Bio</label>
-            <textarea id="sizing-textarea" class="form-control" rows="4" ng-model="pet.bio"
+            <label class="control-label" for="petBio">Bio</label>
+            <textarea id="petBio" class="form-control" rows="4" ng-model="pet.bio"
                       placeholder="Enter bio..."></textarea>
         </div>
 
 
         <div class="form-group">
-            <label for="exampleInputFile">Uplage image</label>
-            <input type="file" class="form-control-file" id="exampleInputFile" uploader="upload">
+            <label for="petImage">Uplage image</label>
+            <input type="file" class="form-control-file" id="petImage" uploader="upload">
             <!--<small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>-->
         </div>
     </form>
     <div class="modal-footer">
-        <button type="submit" data-automation="submitButton" class="btn btn-primary pull-left"
+        <button type="submit" class="btn btn-primary pull-left"
                 ng-click="performAction()">
             Add
         </button>
-        <button data-automation="cancelButton" type="button" class="btn btn-link pull-left" ng-click="$dismiss()">
+        <button type="button" class="btn btn-link pull-left" ng-click="$dismiss()">
             Cancel
         </button>
     </div>

@@ -1,16 +1,9 @@
 'use strict';
 
-TOA.controller('AddPetModalController', function ($scope, $modalInstance, title, message, action, actionButtonText,
-                                                  petService) {
-	$scope.message = message;
-	$scope.actionButtonText = actionButtonText;
-	$scope.title = title;
-	$scope.errorHandler = {};
-
+TOA.controller('AddPetModalController', function ($scope, $modalInstance, action, petService) {
 	$scope.pet = {};
 	$scope.upload = {};
 
-	// default call-back functions
 	$scope.finished = function () {
 		$modalInstance.close();
 	};
