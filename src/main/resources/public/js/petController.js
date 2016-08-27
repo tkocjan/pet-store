@@ -50,7 +50,7 @@ TOA.controller('PetController', function ($scope, $modal, petService, $location,
 			scope: $scope,
 			resolve: {
 				action: function () {
-					return createPet
+					return createPet;
 				}
 			}
 		});
