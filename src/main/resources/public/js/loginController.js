@@ -7,7 +7,7 @@ TOA.controller('LoginController', function ($scope, $location, authService, $htt
 			authService.login($scope.credentials)
 			.then(function (data) {
 				$rootScope.authenticated = data.authenticated;
-
+	
 				if ($rootScope.authenticated) {
 					$location.path("/pet-store");
 					$scope.error = false;

@@ -16,9 +16,9 @@ TOA.controller('PetController', function ($scope, $modal, petService, $location,
 			});
 	}
 
-	$scope.delete = function (petId) {
-		petService.delete(petId).then(function (response) {
-			$scope.loadPets();
+	$scope.delete = function (pet) {
+		petService.delete(pet.id).then(function (response) {
+			$scope.pets = _.without($scope.pets, pet)
 		});
 	}
 
@@ -65,7 +65,7 @@ TOA.controller('PetController', function ($scope, $modal, petService, $location,
 		return authService.currentUser().authorities.indexOf(permission) > -1;
 	}
 
-	$scope.signedIn = function() {
+	$scope.signedIn = function () {
 		return authService.currentUser();
 	}
 });
