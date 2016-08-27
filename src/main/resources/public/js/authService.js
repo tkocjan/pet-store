@@ -3,12 +3,17 @@
 TOA.factory('authService', function ($http) {
 	return {
 
-		login: function (username, password) {
+		login: function (credentials) {
+			var fd = new FormData();
+			fd.append('username', credentials.username);
+			fd.append('password', credentials.password);
+
 			return $http({
-				url: 'login',
+				url: '/login',
 				method: 'POST',
-				data: {username: username, password: password}
-			});
+				headers: {'Content-Type': undefined},
+				data: fd
+			})
 		}
 	};
 });
