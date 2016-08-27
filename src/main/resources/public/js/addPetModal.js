@@ -11,7 +11,7 @@ TOA.controller('AddPetModalController', function ($scope, $modalInstance, action
 	$scope.performAction = function () {
 		petService.create($scope.pet, $scope.upload.csvFile)
 			.then(function (response) {
-				action();
+				action($scope.pet, $scope.upload.csvFile);
 				$modalInstance.close();
 			});
 	};

@@ -29,8 +29,14 @@ TOA.controller('PetController', function ($scope, $modal, petService, $location,
 			windowClass: 'settings-modal',
 			resolve: {
 				action: function () {
-					return function () {
-						return $scope.loadPets();
+					return function (pet, image) {
+
+						var reader = new FileReader();
+						reader.onload = function (e) {
+							pet.image = reader.result;
+							$scope.pets.push(pet)
+						};
+						reader.readAsDataURL(image);
 					}
 				}
 			}
