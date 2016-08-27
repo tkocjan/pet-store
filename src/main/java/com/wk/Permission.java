@@ -4,7 +4,6 @@ import org.springframework.security.core.GrantedAuthority;
 
 /**
  * @author WaleedK
- * @since 0.0.0
  */
 public enum Permission implements GrantedAuthority {
 	CREATE,
