@@ -1,4 +1,4 @@
-<div ng-init="init()">
+<div id="PetPage" ng-init="init()">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -21,8 +21,8 @@
         </div>
     </nav>
 
-    <div class="row" style="margin-top: 50px;margin-left: 40px">
-        <div ng-repeat="pet in pets" class="col-md-4 panel-body" style="height: 500px">
+    <div class="row">
+        <div ng-repeat="pet in pets" class="col-md-4 panel-body">
             <div class="thumbnail">
                 <img ng-src="{{pet.url ? pet.url : 'data:image/jpeg;base64,' + pet.image }}">
                 <div class="caption">
