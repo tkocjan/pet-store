@@ -21,8 +21,8 @@ public class PetController {
 	private PetService petService;
 
 	@RequestMapping(method = RequestMethod.POST, consumes = {"multipart/form-data"})
-	public void create(@RequestPart("pet") String petString, @RequestPart("image") MultipartFile csvFile) throws IOException {
-		petService.save(new ObjectMapper().readValue(petString, Pet.class), csvFile);
+	public void create(@RequestPart("pet") String petString, @RequestPart("image") MultipartFile image) throws IOException {
+		petService.save(new ObjectMapper().readValue(petString, Pet.class), image);
 	}
 
 	@RequestMapping(value = "{petId}", method = RequestMethod.GET)
@@ -37,6 +37,7 @@ public class PetController {
 
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	public List<Pet> getAll(String query) {
-		return petService.getAll(query);
+		List<Pet> all = petService.getAll(query);
+		return all;
 	}
 }

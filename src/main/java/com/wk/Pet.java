@@ -25,7 +25,7 @@ public class Pet {
 	private PetType type;
 
 	@Lob
-	private String base64Image;
+	private byte[] image;
 
 	private String bio;
 
@@ -48,12 +48,12 @@ public class Pet {
 		this.name = name;
 	}
 
-	public String getBase64Image() {
-		return base64Image;
+	public byte[] getImage() {
+		return image;
 	}
 
-	public void setBase64Image(String base64Image) {
-		this.base64Image = base64Image;
+	public void setImage(byte[] image) {
+		this.image = image;
 	}
 
 	public PetType getType() {

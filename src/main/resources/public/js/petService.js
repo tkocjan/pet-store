@@ -12,7 +12,7 @@ TOA.factory('petService', function ($http) {
 			return $http({
 				url: '/pet/all',
 				method: 'GET',
-				params: {query: query},
+				params: {query: query}
 			});
 		},
 		create: function (pet, image) {

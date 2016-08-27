@@ -3,7 +3,6 @@ package com.wk;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.Base64;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,13 +18,13 @@ public class PetService {
 	private PetRepository petRepository;
 
 	@Transactional
-	public void save(Pet pet, MultipartFile csvFile) {
+	public void save(Pet pet, MultipartFile image) {
 		File tempFile = null;
 		try {
 			tempFile = File.createTempFile("temp", "");
-			csvFile.transferTo(tempFile);
-			String base64 = Base64.getEncoder().encodeToString(Files.readAllBytes(tempFile.toPath()));
-			pet.setBase64Image(base64);
+			image.transferTo(tempFile);
+			byte[] imageBytes = Files.readAllBytes(tempFile.toPath());
+			pet.setImage(imageBytes);
 			petRepository.save(pet);
 		} catch (IOException e) {
 			e.printStackTrace();
