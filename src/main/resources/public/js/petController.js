@@ -1,6 +1,6 @@
 'use strict';
 
-TOA.controller('PetController', function ($scope, $modal, petService, $location) {
+TOA.controller('PetController', function ($scope, $modal, petService, $location, authService) {
 	$scope.init = function () {
 		$scope.pets = [];
 		$scope.query = null;
@@ -56,4 +56,16 @@ TOA.controller('PetController', function ($scope, $modal, petService, $location)
 	$scope.logout = function () {
 		$location.path('/login');
 	};
+
+	$scope.hasPermission = function (permission) {
+		if (!authService.currentUser()) {
+			return false;
+		}
+
+		return authService.currentUser().authorities.indexOf(permission) > -1;
+	}
+
+	$scope.signedIn = function() {
+		return authService.currentUser();
+	}
 });

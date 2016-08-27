@@ -6,11 +6,16 @@
             </div>
             <div id="navbar">
                 <form class="navbar-form navbar-right">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search" ng-model="query" ng-model-options="{ debounce: 300 }">
+                    <div class="form-group" ng-if="hasPermission('READ')">
+                        <input type="text" class="form-control" placeholder="Search" ng-model="query"
+                               ng-model-options="{ debounce: 300 }">
                     </div>
-                    <button type="submit" class="btn btn-default" ng-click="add()">Add pet</button>
-                    <button type="submit" class="btn btn-default" ng-click="logout()">Sign Out</button>
+                    <button type="submit" class="btn btn-default" ng-click="add()" ng-if="hasPermission('CREATE')">
+                        Add pet
+                    </button>
+                    <button type="submit" class="btn btn-default" ng-click="logout()" ng-if="signedIn()">
+                        Sign Out
+                    </button>
                 </form>
             </div>
         </div>
@@ -25,7 +30,10 @@
                     <h5>{{pet.type.name}}</h5>
                     <p class="text-muted">{{pet.bio}}</p>
                 </div>
-                <button type="button" class="btn btn-primary btn-link" ng-click="delete(pet.id)">Delete</button>
+                <button ng-if="hasPermission('DELETE')" type="button" class="btn btn-primary btn-link"
+                        ng-click="delete(pet.id)">
+                    Delete
+                </button>
             </div>
         </div>
     </div>
