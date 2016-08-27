@@ -4,11 +4,9 @@ TOA.controller('LoginController', function ($scope, $location, authService, $htt
 	$scope.login = function () {
 		$scope.dataLoading = true;
 
-			authService.login($scope.credentials)
+		authService.login($scope.credentials)
 			.then(function (data) {
-				$rootScope.authenticated = data.authenticated;
-	
-				if ($rootScope.authenticated) {
+				if (data.authenticated) {
 					$location.path("/pet-store");
 					$scope.error = false;
 				} else {
@@ -20,8 +18,7 @@ TOA.controller('LoginController', function ($scope, $location, authService, $htt
 			}, function () {
 				$location.path("/login");
 				$scope.error = true;
-				$rootScope.authenticated = false;
-				
+
 				$scope.dataLoading = false;
 			});
 	};
