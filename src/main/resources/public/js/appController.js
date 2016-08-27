@@ -4,6 +4,7 @@ TOA.controller('AppController', function ($scope, $q, authService, $location, $r
 
 	$rootScope.$on("$routeChangeStart", function (event, next) {
 		if (next.originalPath == '/login') {
+			authService.resetUser();
 			return;
 		}
 

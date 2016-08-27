@@ -1,6 +1,6 @@
 'use strict';
 
-TOA.controller('PetController', function ($scope, $modal, petService) {
+TOA.controller('PetController', function ($scope, $modal, petService, $location) {
 	$scope.init = function () {
 		$scope.pets = [];
 		$scope.query = null;
@@ -52,4 +52,8 @@ TOA.controller('PetController', function ($scope, $modal, petService) {
 			$scope.loadPets();
 		}
 	});
+
+	$scope.logout = function () {
+		$location.path('/login');
+	};
 });
