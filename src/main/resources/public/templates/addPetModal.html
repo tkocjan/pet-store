@@ -30,6 +30,10 @@
             <input type="file" class="form-control-file" id="petImage" uploader="upload">
             <!--<small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>-->
         </div>
+
+        <div ng-show="upload.csvFile" class="thumbnail">
+            <img ng-src="{{upload.image}}">
+        </div>
     </form>
     <div class="modal-footer">
         <button type="submit" class="btn btn-primary pull-left"
