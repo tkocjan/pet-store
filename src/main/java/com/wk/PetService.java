@@ -18,17 +18,18 @@ public class PetService {
 	private PetRepository petRepository;
 
 	@Transactional
-	public void save(Pet pet, MultipartFile image) {
+	public Pet save(Pet pet, MultipartFile image) {
 		File tempFile = null;
 		try {
 			tempFile = File.createTempFile("temp", "");
 			image.transferTo(tempFile);
 			byte[] imageBytes = Files.readAllBytes(tempFile.toPath());
 			pet.setImage(imageBytes);
-			petRepository.save(pet);
+			pet = petRepository.save(pet);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return pet;
 	}
 
 	@Transactional
