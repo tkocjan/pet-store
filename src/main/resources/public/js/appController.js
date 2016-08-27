@@ -8,7 +8,7 @@ TOA.controller('AppController', function ($scope, $q, authService, $location, $r
 		}
 
 		if (!authService.currentUser() || !authService.currentUser().authenticated) {
-			authService.currentUser = null;
+			authService.resetUser();
 			$location.url('/login');
 		}
 	});

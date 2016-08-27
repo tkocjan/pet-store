@@ -1,7 +1,7 @@
 'use strict';
 
 TOA.factory('authService', function ($http, $q) {
-	var currentUser;
+	var currUser;
 
 	return {
 		login: function (credentials) {
@@ -18,9 +18,9 @@ TOA.factory('authService', function ($http, $q) {
 				data: fd
 			}).then(function (response) {
 				if (response.data.name !== null) {
-					currentUser = response.data;
+					currUser = response.data;
 				}
-				deferred.resolve(currentUser);
+				deferred.resolve(currUser);
 			}, function () {
 				deferred.resolve(null);
 			});
@@ -28,7 +28,10 @@ TOA.factory('authService', function ($http, $q) {
 			return deferred.promise;
 		},
 		currentUser: function () {
-			return currentUser;
+			return currUser;
+		},
+		resetUser: function () {
+			currUser = null;
 		}
 	};
 });

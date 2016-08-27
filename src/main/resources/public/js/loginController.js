@@ -1,7 +1,10 @@
 TOA.controller('LoginController', function ($scope, $location, authService, $http, $rootScope) {
+	$scope.dataLoading = false;
 
 	$scope.login = function () {
-		authService.login($scope.credentials)
+		$scope.dataLoading = true;
+
+			authService.login($scope.credentials)
 			.then(function (data) {
 				$rootScope.authenticated = data.authenticated;
 
@@ -13,10 +16,13 @@ TOA.controller('LoginController', function ($scope, $location, authService, $htt
 					$scope.error = true;
 				}
 
+				$scope.dataLoading = false;
 			}, function () {
 				$location.path("/login");
 				$scope.error = true;
 				$rootScope.authenticated = false;
+				
+				$scope.dataLoading = false;
 			});
 	};
 });
