@@ -1,11 +1,8 @@
 package com.wk;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 /**
  * @author WaleedK
  */
-@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum PetType {
 	DOG("Dog"),
 	CAT("Cat"),

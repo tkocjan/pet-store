@@ -21,5 +21,4 @@ TOA.controller('AddPetModalController', function ($scope, $modalInstance, action
 	$scope.handleError = function (response) {
 		$scope.errorHandler.serverErrors = response;
 	};
-
 });

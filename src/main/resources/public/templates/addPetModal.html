@@ -10,10 +10,8 @@
         </div>
         <div class="form-group">
             <label for="petType">Type</label>
-            <select class="form-control" ng-model="pet.type" id="petType">
-                <option value="DOG">Dog</option>
-                <option value="CAT">Cat</option>
-                <option value="HAMSTER">Hamster</option>
+            <select class="form-control" ng-model="pet.type" id="petType"
+                    ng-options="key as value for (key , value) in PET_TYPES">
                 <option ng-if="!pet.type" value="">Choose type</option>
             </select>
         </div>

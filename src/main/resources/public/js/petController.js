@@ -1,6 +1,13 @@
 'use strict';
 
 TOA.controller('PetController', function ($scope, $modal, petService, $location, authService) {
+	$scope.PET_TYPES = Object.freeze(
+		{
+			'DOG': 'Dog',
+			'CAT': 'Cat',
+			'HAMSTER': 'Hamster'
+		});
+
 	$scope.init = function () {
 		$scope.pets = [];
 		$scope.query = null;
@@ -27,6 +34,7 @@ TOA.controller('PetController', function ($scope, $modal, petService, $location,
 			templateUrl: '../templates/addPetModal.html',
 			controller: 'AddPetModalController',
 			windowClass: 'settings-modal',
+			scope: $scope,
 			resolve: {
 				action: function () {
 					return function (pet) {
