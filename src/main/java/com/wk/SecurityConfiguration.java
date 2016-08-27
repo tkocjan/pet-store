@@ -15,6 +15,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 @Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+	@Autowired
+	private AuthSuccessHandler authSuccessHandler;
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
@@ -41,19 +43,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 				.anyRequest().authenticated()
 
-				.and()
-				.formLogin()
+				.and().formLogin().successHandler(authSuccessHandler)
 
-				.and()
-				.logout()
-				.deleteCookies("JSESSIONID")
-				.permitAll()
+				.and().httpBasic().disable()
 
-				.and()
-				.rememberMe().alwaysRemember(false)
+				.logout().deleteCookies("JSESSIONID").permitAll()
 
-				.and()
+				.and().rememberMe().disable()
+
 				.sessionManagement().maximumSessions(1);
+
 	}
 
 	@Autowired
