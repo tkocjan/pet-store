@@ -29,40 +29,31 @@ TOA.controller('PetController', function ($scope, $modal, petService, $location,
 		});
 	}
 
-	var createPet = function (pet, upload) {
-		var deferred = $q.defer();
-		petService.create(pet, upload.csvFile)
-			.then(function (response) {
-				pet.url = upload.url;
-				pet.id = response.data;
-				$scope.pets.push(pet)
-
-				deferred.resolve(pet);
-			});
-		return deferred.promise;
-	};
-
 	$scope.add = function () {
-		var modalInstance = $modal.open({
+		$scope.pet = {};
+		$scope.upload = {};
+
+		$scope.performAction = function () {
+			petService.create($scope.pet, $scope.upload.csvFile)
+				.then(function (response) {
+					$scope.pet.url = $scope.upload.url;
+					$scope.pet.id = response.data;
+					$scope.pets.push($scope.pet);
+					$scope.modalInstance.close();
+				});
+		};
+
+		$scope.modalInstance = $modal.open({
 			templateUrl: '../templates/addPetModal.html',
-			controller: 'AddPetModalController',
 			windowClass: 'settings-modal',
-			scope: $scope,
-			resolve: {
-				action: function () {
-					return createPet;
-				}
-			}
+			scope: $scope
 		});
 
 		$scope.$on('$destroy', function () {
 			try {
-				modalInstance.close();
+				$scope.modalInstance.close();
 			} catch (e) {
 			}
-		});
-
-		modalInstance.result.then(function () {
 		});
 	};
 
