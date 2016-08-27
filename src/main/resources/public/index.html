@@ -20,8 +20,9 @@
 </head>
 
 <body ng-app="TOA">
-<div ng-view></div>
-
+<div ng-controller="AppController">
+    <div ng-view></div>
+</div>
 <script src="bower-lib/angular/angular.js"></script>
 <script src="bower-lib/angular-route/angular-route.js"></script>
 <script src="bower-lib/angular-bootstrap/ui-bootstrap.js"></script>
@@ -31,6 +32,7 @@
 <script src="js/authService.js"></script>
 <script src="js/petController.js"></script>
 <script src="js/petService.js"></script>
+<script src="js/appController.js"></script>
 <script src="js/UploaderDirective.js"></script>
 <script src="js/addPetModal.js"></script>
 </body>

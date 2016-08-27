@@ -11,7 +11,7 @@ angular.module('TOA', [
 	}).when('/login', {
 		templateUrl: '../templates/login.html',
 		controller: 'LoginController',
-	}).otherwise('/login');
+	}).otherwise('/pet-store');
 
 	$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 

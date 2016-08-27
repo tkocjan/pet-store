@@ -1,19 +1,34 @@
 'use strict';
 
-TOA.factory('authService', function ($http) {
-	return {
+TOA.factory('authService', function ($http, $q) {
+	var currentUser;
 
+	return {
 		login: function (credentials) {
 			var fd = new FormData();
 			fd.append('username', credentials.username);
 			fd.append('password', credentials.password);
 
-			return $http({
+			var deferred = $q.defer();
+
+			$http({
 				url: '/login',
 				method: 'POST',
 				headers: {'Content-Type': undefined},
 				data: fd
-			})
+			}).then(function (response) {
+				if (response.data.name !== null) {
+					currentUser = response.data;
+				}
+				deferred.resolve(currentUser);
+			}, function () {
+				deferred.resolve(null);
+			});
+
+			return deferred.promise;
+		},
+		currentUser: function () {
+			return currentUser;
 		}
 	};
 });
