@@ -1,8 +1,6 @@
 package com.wk;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +17,8 @@ public class PetService {
 
 	@Transactional
 	public Pet save(Pet pet, MultipartFile image) {
-		File tempFile = null;
 		try {
-			tempFile = File.createTempFile("temp", "");
-			image.transferTo(tempFile);
-			byte[] imageBytes = Files.readAllBytes(tempFile.toPath());
-			pet.setImage(imageBytes);
+			pet.setImage(image.getBytes());
 			pet = petRepository.save(pet);
 		} catch (IOException e) {
 			e.printStackTrace();
