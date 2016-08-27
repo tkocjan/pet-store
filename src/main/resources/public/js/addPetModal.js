@@ -1,6 +1,6 @@
 'use strict';
 
-TOA.controller('AddPetModalController', function ($scope, $modalInstance, action, petService) {
+TOA.controller('AddPetModalController', function ($scope, $modalInstance, action) {
 	$scope.pet = {};
 	$scope.upload = {};
 
@@ -9,13 +9,9 @@ TOA.controller('AddPetModalController', function ($scope, $modalInstance, action
 	};
 
 	$scope.performAction = function () {
-		petService.create($scope.pet, $scope.upload.csvFile)
-			.then(function (response) {
-				$scope.pet.url = $scope.upload.url;
-				$scope.pet.id = response.data;
-				action($scope.pet);
-				$modalInstance.close();
-			});
+		action($scope.pet, $scope.upload).then(function () {
+			$modalInstance.close();
+		});
 	};
 
 	$scope.handleError = function (response) {

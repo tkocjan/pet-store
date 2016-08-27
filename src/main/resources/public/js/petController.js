@@ -1,6 +1,6 @@
 'use strict';
 
-TOA.controller('PetController', function ($scope, $modal, petService, $location, authService) {
+TOA.controller('PetController', function ($scope, $modal, petService, $location, authService, $q) {
 	$scope.PET_TYPES = Object.freeze(
 		{
 			'DOG': 'Dog',
@@ -37,8 +37,17 @@ TOA.controller('PetController', function ($scope, $modal, petService, $location,
 			scope: $scope,
 			resolve: {
 				action: function () {
-					return function (pet) {
-						$scope.pets.push(pet)
+					return function (pet, upload) {
+						var deferred = $q.defer();
+						petService.create(pet, upload.csvFile)
+							.then(function (response) {
+								pet.url = upload.url;
+								pet.id = response.data;
+								$scope.pets.push(pet)
+
+								deferred.resolve(pet);
+							});
+						return deferred.promise;
 					}
 				}
 			}
