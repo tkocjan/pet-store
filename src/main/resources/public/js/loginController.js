@@ -1,39 +1,34 @@
 TOA.controller('LoginController', function ($scope, $location, authService, $http, $rootScope) {
 
 
-	$scope.tab = function(route) {
+	$scope.tab = function (route) {
 		return $route.current && route === $route.current.controller;
 	};
 
-	var authenticate = function(credentials, callback) {
+	var authenticate = function (credentials, callback) {
+		var fd = new FormData();
+		fd.append('username', credentials.username);
+		fd.append('password', credentials.password);
 
-		var headers = credentials ? {
-			authorization : "Basic "
-			+ btoa(credentials.username + ":"
-				+ credentials.password)
-		} : {};
-
-		$http.get('user', {
-			headers : headers
-		}).then(function(response) {
-			if (response.data.name) {
-				$rootScope.authenticated = true;
-			} else {
-				$rootScope.authenticated = false;
-			}
+		$http({
+			url: '/login',
+			method: 'POST',
+			headers: {'Content-Type': undefined},
+			data: fd
+		}).then(function (response) {
+			console.log(response);
+			$rootScope.authenticated = true;
 			callback && callback($rootScope.authenticated);
-		}, function() {
+		}, function () {
 			$rootScope.authenticated = false;
 			callback && callback(false);
 		});
 
 	}
 
-	authenticate();
-
 	$scope.credentials = {};
-	$scope.login = function() {
-		authenticate($scope.credentials, function(authenticated) {
+	$scope.login = function () {
+		authenticate($scope.credentials, function (authenticated) {
 			if (authenticated) {
 				console.log("Login succeeded")
 				$location.path("/pet-store");

@@ -33,7 +33,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 				.authorizeRequests()
 
-				.antMatchers("/", "/index.html", "/user").permitAll()
+				.antMatchers("/", "/login", "/index.html", "/user").permitAll()
 
 				.antMatchers(HttpMethod.GET, "/pet/**").hasAuthority(Permission.READ.getAuthority())
 				.antMatchers(HttpMethod.POST, "/pet/**").hasAuthority(Permission.CREATE.getAuthority())
@@ -42,7 +42,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.anyRequest().authenticated()
 
 				.and()
-				.httpBasic()
+				.formLogin()
 
 				.and()
 				.logout()

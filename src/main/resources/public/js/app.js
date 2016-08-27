@@ -12,6 +12,9 @@ angular.module('TOA', [
 		templateUrl: '../templates/login.html',
 		controller: 'LoginController',
 	}).otherwise('/login');
+
+	$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
 });
 
 var TOA = angular.module('TOA');
