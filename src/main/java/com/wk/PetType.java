@@ -6,7 +6,9 @@ package com.wk;
 public enum PetType {
 	DOG("Dog"),
 	CAT("Cat"),
-	HAMSTER("Hamster");
+	HAMSTER("Hamster"),
+	HEDGEHOG("Hedgehog"),
+	CHINCHILLAS("Chinchillas");
 
 	private String name;
 

@@ -5,7 +5,9 @@ TOA.controller('PetController', function ($scope, $uibModal, petService, $locati
 		{
 			'DOG': 'Dog',
 			'CAT': 'Cat',
-			'HAMSTER': 'Hamster'
+			'HAMSTER': 'Hamster',
+			'HEDGEHOG': 'Hedgehog',
+			'CHINCHILLAS': 'Chinchillas',
 		});
 
 	$scope.init = function () {
