@@ -1,7 +1,10 @@
 package com.wk;
 
+import java.awt.*;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.List;
+import javax.imageio.ImageIO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,24 +19,25 @@ public class PetService {
 	private PetRepository petRepository;
 
 	@Transactional
-	public Pet save(Pet pet, MultipartFile image) {
-		try {
-			if (image != null) {
-				pet.setImage(image.getBytes());
+	public Pet save(Pet pet, MultipartFile multipartFile) throws IOException {
+		if (multipartFile != null) {
+			pet.setImage(multipartFile.getBytes());
+			Image image = ImageIO.read(new ByteArrayInputStream(pet.getImage()));
+			if (image == null) {
+				throw new RuntimeException("Image is not valid");
 			}
-			pet = petRepository.save(pet);
-		} catch (IOException e) {
-			e.printStackTrace();
+
 		}
-		return pet;
+
+		return petRepository.save(pet);
 	}
 
-	@Transactional
+	@Transactional(readOnly = true)
 	public Pet get(long petId) {
 		return petRepository.findOne(petId);
 	}
 
-	@Transactional
+	@Transactional(readOnly = true)
 	public List<Pet> getAll(String query) {
 		return query == null ? petRepository.findAll() : petRepository.findAll(query);
 	}

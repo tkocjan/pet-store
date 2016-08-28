@@ -1,6 +1,7 @@
 package com.wk;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolation;
@@ -25,5 +26,12 @@ public class GlobalControllerExceptionHandler {
 			errorCodes.add(constraintViolation.getMessageTemplate());
 		}
 		return errorCodes;
+	}
+
+	@ExceptionHandler(RuntimeException.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ResponseBody
+	public List<String> handleValidationException(HttpServletRequest req, RuntimeException ex) {
+		return Arrays.asList(ex.getMessage());
 	}
 }
