@@ -24,7 +24,7 @@
     <div class="row">
         <div ng-repeat="pet in pets" class="col-md-4 panel-body">
             <div class="thumbnail">
-                <img ng-src="{{pet.url ? pet.url : 'data:image/jpeg;base64,' + pet.image }}">
+                <img class="img-rounded" ng-src="{{pet.url ? pet.url : 'data:image/jpeg;base64,' + pet.image }}">
                 <div class="caption">
                     <h3>{{pet.name}}</h3>
                     <h5>{{PET_TYPES[pet.type]}}</h5>

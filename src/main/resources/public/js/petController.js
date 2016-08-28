@@ -1,6 +1,6 @@
 'use strict';
 
-TOA.controller('PetController', function ($scope, $modal, petService, $location, authService, $q) {
+TOA.controller('PetController', function ($scope, $uibModal, petService, $location, authService, $q) {
 	$scope.PET_TYPES = Object.freeze(
 		{
 			'DOG': 'Dog',
@@ -48,7 +48,7 @@ TOA.controller('PetController', function ($scope, $modal, petService, $location,
 				}, handleError);
 		};
 
-		$scope.modalInstance = $modal.open({
+		$scope.modalInstance = $uibModal.open({
 			templateUrl: '../templates/addPetModal.html',
 			windowClass: 'settings-modal',
 			scope: $scope
