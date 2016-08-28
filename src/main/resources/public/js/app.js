@@ -2,7 +2,8 @@
 
 angular.module('TOA', [
 	'ngRoute',
-	'ui.bootstrap'
+	'ui.bootstrap',
+	'ngAnimate'
 ]).config(function ($routeProvider, $httpProvider) {
 	$routeProvider.when('/pet-store', {
 		templateUrl: '../templates/petPage.html',
