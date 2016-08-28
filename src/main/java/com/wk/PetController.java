@@ -21,7 +21,8 @@ public class PetController {
 	private PetService petService;
 
 	@RequestMapping(method = RequestMethod.POST, consumes = {"multipart/form-data"})
-	public Long create(@RequestPart("pet") String petString, @RequestPart("image") MultipartFile image) throws IOException {
+	public Long create(@RequestPart("pet") String petString,
+			@RequestPart(value = "image", required = false) MultipartFile image) throws IOException {
 		return petService.save(new ObjectMapper().readValue(petString, Pet.class), image).getId();
 	}
 

@@ -18,7 +18,9 @@ public class PetService {
 	@Transactional
 	public Pet save(Pet pet, MultipartFile image) {
 		try {
-			pet.setImage(image.getBytes());
+			if (image != null) {
+				pet.setImage(image.getBytes());
+			}
 			pet = petRepository.save(pet);
 		} catch (IOException e) {
 			e.printStackTrace();

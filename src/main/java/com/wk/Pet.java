@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  * @author WaleedK
@@ -19,14 +21,19 @@ public class Pet {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@NotNull(message = "Name is a required field.")
+	@Size(min = 1, max = 50, message = "Name cannot be empty.")
 	private String name;
 
+	@NotNull(message = "Type is a required field.")
 	@Enumerated(EnumType.STRING)
 	private PetType type;
 
 	@Lob
+	@Size(max = 1000000, message = "Image is too big.")
 	private byte[] image;
 
+	@Size(max = 500, message = "Bio is too big.")
 	private String bio;
 
 	protected Pet() {

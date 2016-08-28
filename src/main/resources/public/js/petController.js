@@ -29,9 +29,14 @@ TOA.controller('PetController', function ($scope, $modal, petService, $location,
 		});
 	}
 
+	var handleError = function (response) {
+		$scope.serverErrors = response.data;
+	};
+
 	$scope.add = function () {
 		$scope.pet = {};
 		$scope.upload = {};
+		$scope.serverErrors = {};
 
 		$scope.performAction = function () {
 			petService.create($scope.pet, $scope.upload.csvFile)
@@ -40,7 +45,7 @@ TOA.controller('PetController', function ($scope, $modal, petService, $location,
 					$scope.pet.id = response.data;
 					$scope.pets.push($scope.pet);
 					$scope.modalInstance.close();
-				});
+				}, handleError);
 		};
 
 		$scope.modalInstance = $modal.open({
@@ -55,6 +60,10 @@ TOA.controller('PetController', function ($scope, $modal, petService, $location,
 			} catch (e) {
 			}
 		});
+
+		$scope.handleError = function (response) {
+			$scope.errorHandler.serverErrors = response;
+		};
 	};
 
 	$scope.$watch('query', function (newValue, oldValue) {

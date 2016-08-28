@@ -32,6 +32,10 @@
         <div ng-show="upload.csvFile" class="thumbnail">
             <img ng-src="{{upload.url}}">
         </div>
+
+        <div ng-if="serverErrors && serverErrors.length > 0" class="alert alert-danger">
+            <ul ng-repeat="error in serverErrors">{{error}}</ul>
+        </div>
     </form>
     <div class="modal-footer">
         <button type="submit" class="btn btn-primary pull-left"
