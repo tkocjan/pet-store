@@ -6,5 +6,3 @@ tmp
 .DS_Store
 .idea
 *.iml
-/src/main/resources/public/dist/**
-/src/main/resources/public/bower-lib/**
